@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Nextravox | Penang Web Development & Digital Services</title>
+  <meta name="description" content="Nextravox provides next-gen web development, SEO, and IT support in Penang. From building sites to 'speaking with machines,' we handle the digital heavy lifting." />
+  <meta name="keywords" content="Web Development Penang, SEO Malaysia, IT Support Penang, Freelance Developer Malaysia, Nextravox, Digital Services" />
+  <meta name="author" content="Nextravox" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.nextravox.com/" />
+  <meta property="og:title" content="Nextravox | Penang's Next-Gen IT Services" />
+  <meta property="og:description" content="Something's cooking! We're building digital real estate and 'speaking with machines' so you don't have to. Stay tuned." />
+  <meta property="og:image" content="URL_TO_YOUR_PREVIEW_IMAGE" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Nextravox",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Penang",
+        "addressCountry": "MY"
+      },
+      "url": "https://www.nextravox.com",
+      "description": "Professional web development, SEO, and technical support services based in Penang, Malaysia.",
+      "offers": {
+        "@type": "Offer",
+        "itemOffered": ["Web Development", "SEO Optimization", "IT Support"]
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              primary: '#135bec',
+              accent: '#06b6d4',
+              dark: '#0a0a0a',
+              surface: '#111827'
+            }
+          },
+          fontFamily: { sans: ['Space Grotesk', 'sans-serif'] },
+          borderRadius: { 'brand': '1rem' }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body { 
+      background-color: #0a0a0a; 
+      color: #f9fafb; 
+      scroll-behavior: smooth; 
+    }
+    
+    /* THE FIX: Use background-image and enforce the dark background color */
+    .hero-gradient { 
+      background-color: #0a0a0a;
+      background-image: radial-gradient(circle at top right, rgba(19, 91, 236, 0.15), transparent 60%); 
+    }
+    
+    .glass-card { 
+      background: rgba(17, 24, 39, 0.7); 
+      backdrop-filter: blur(12px); 
+      border: 1px solid rgba(255, 255, 255, 0.1); 
+    }
+  </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden hero-gradient min-h-screen flex flex-col">
+
+  <header class="w-full p-6 flex justify-center md:justify-start">
+    <div class="flex items-center space-x-2">
+      <div class="w-10 h-10 bg-brand-primary rounded-brand flex items-center justify-center shadow-lg shadow-brand-primary/20">
+        <span class="text-white font-bold text-xl">N</span>
+      </div>
+      <span class="text-2xl font-bold tracking-tight text-white">Nextravox</span>
+    </div>
+  </header>
+
+  <main class="flex-grow flex flex-col items-center justify-center px-6 py-12 max-w-7xl mx-auto w-full">
+    
+    <section class="text-center max-w-3xl mx-auto mb-20 space-y-6">
+      <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-sm font-semibold">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-accent"></span>
+        </span>
+        <span>System booting up... owner & dev currently working hard with panda eyes 🐼. Give us time!</span>
+      </div>
+      
+      <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight text-white">
+        Next-Gen IT Services in
+        <br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-primary drop-shadow-sm">
+          Penang.
+        </span>
+      </h1>
+      
+      <p class="text-xl text-gray-400 leading-relaxed">
+        Our full website is still in the oven. Our devs are fueled by coffee and currently coding the matrix. Meanwhile, here’s a quick rundown of what we actually do.
+      </p>
+    </section>
+
+    <section class="w-full space-y-8 mb-24">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-white uppercase tracking-widest text-sm text-brand-accent">Services & Skills</h2>
+        <div class="w-16 h-1 bg-brand-primary mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <article class="glass-card p-8 rounded-brand hover:-translate-y-2 transition-transform duration-300">
+          <div class="w-12 h-12 bg-brand-primary/20 rounded-lg flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-brand-accent text-2xl">person_search</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Your Typical IT Guy</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Based right here in Penang. Just a freelancer who loves tech and does the heavy digital lifting so you can focus on your actual business. I’m currently at that specific stage in a developer's life where the code is finally starting to make sense, but my hair is starting to... well, let's just say it's getting thinner. 👨‍💻📉
+          </p>
+        </article>
+
+        <article class="glass-card p-8 rounded-brand hover:-translate-y-2 transition-transform duration-300">
+          <div class="w-12 h-12 bg-brand-primary/20 rounded-lg flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-brand-accent text-2xl">language</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">A to Z Web Dev</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            From writing code to registering your domain and wrestling with server setup. We build your digital real estate from the ground up. We'll handle the <b>"speaking with machines"</b> part for you—it's less awkward that way.
+          </p>
+        </article>
+
+        <article class="glass-card p-8 rounded-brand hover:-translate-y-2 transition-transform duration-300">
+          <div class="w-12 h-12 bg-brand-primary/20 rounded-lg flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-brand-accent text-2xl">trending_up</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">SEO & Maintenance</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Building it isn't enough. We help maintain your site so it doesn't break, and optimize your SEO so Google knows you exist. My SEO guy spends an unhealthy amount of time staring at keywords and arguing with the algorithm until he starts seeing the Matrix. I think he's not insane, just "highly optimized," I guess...
+          </p>
+        </article>
+
+        <article class="glass-card p-8 rounded-brand hover:-translate-y-2 transition-transform duration-300 lg:col-span-2">
+          <div class="w-12 h-12 bg-brand-primary/20 rounded-lg flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-brand-accent text-2xl">build</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">The "Fix-It" Desk</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            You don't always need a new site—sometimes you just need a fix. We help with your technical "to-do" list: setting up i18n translations, troubleshooting CSS nightmares, or integrating third-party tools. If it’s code, we can probably save it—fueled by coffee and energy drinks, of course.
+          </p>
+        </article>
+
+        <article class="glass-card p-8 rounded-brand hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden border-brand-accent/30">
+          <div class="absolute -top-1 -right-1">
+            <span class="bg-brand-accent text-brand-dark text-[10px] font-bold px-3 py-1 uppercase tracking-tighter rotate-12 inline-block shadow-lg">New Gen</span>
+          </div>
+          <div class="w-12 h-12 bg-brand-accent/20 rounded-lg flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-brand-accent text-2xl">smart_toy</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Small Tools, Big Impact</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            We're building automation tools that work while you sleep. Like our upcoming <b>Smart Router</b> — it's a preset chatbot designed to handle those repetitive questions from new visitors at 3 AM. No need for you to stay OT; let the bot handle the loop while you get your rest.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="w-full max-w-4xl glass-card rounded-brand p-10 md:p-14 text-center relative overflow-hidden">
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          Let's Talk. Don't be afraid, we don't bite. We just stare aggressively at our screens with coffee until the code works. 💻
+        </h2>
+        <p class="text-gray-400 mb-10 leading-relaxed">
+          Not a fan of phone calls? Prefer typing over talking? It's okay, we have shy people here too. We get it. Just shoot us a text or an email.
+        </p>
+        
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+          <a href="https://wa.me/601154162338" target="_blank" class="flex items-center space-x-3 px-8 py-4 bg-[#25D366] hover:bg-[#20b858] text-white font-bold rounded-full shadow-lg hover:scale-105 transition-all w-full md:w-auto justify-center" aria-label="Contact us on WhatsApp">
+            <span>WhatsApp Me</span>
+          </a>
+          <a href="mailto:nextravox@gmail.com" class="flex items-center space-x-3 px-8 py-4 bg-brand-surface border border-brand-primary/30 hover:bg-brand-primary/10 text-white font-bold rounded-full transition-all w-full md:w-auto justify-center group" aria-label="Send us an email">
+            <span class="material-symbols-outlined text-brand-primary mr-2">mail</span>
+            <span>nextravox@gmail.com</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="w-full text-center py-6 text-gray-600 text-sm border-t border-white/5 bg-black">
+    <p>© 2026 Nextravox IT & Digital Services. Proudly serving Penang.</p>
+  </footer>
+
+</body>
+</html>
