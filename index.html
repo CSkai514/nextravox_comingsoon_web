@@ -34,14 +34,9 @@
   </script>
   
   <style>
-    body { background-color: #0a0a0a; color: #f9fafb; scroll-behavior: smooth; overflow-x: hidden; }
-    .hero-gradient { background-color: #0a0a0a; background-image: radial-gradient(circle at top right, rgba(19, 91, 236, 0.15), transparent 60%); }
-    .glass-card { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    body { color: #f9fafb; scroll-behavior: smooth; overflow-x: hidden; }
+    .glass-card { background: rgba(17, 24, 39, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
     
-    /* --- i18n Promo Toast Animations --- */
-    #promoToast { transform: translateY(-150%); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    #promoToast.show { transform: translateY(0); }
-
     /* --- Chatbot Styles --- */
     .fab-container { position: fixed; bottom: 25px; right: 25px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
     .fab-button { width: 60px; height: 60px; background-color: #06b6d4; border-radius: 50%; box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; }
@@ -49,25 +44,25 @@
     .fab-button svg { width: 35px; height: 35px; fill: white; }
     .badge { position: absolute; top: -2px; right: -2px; background-color: #ff3b30; color: white; font-size: 11px; font-weight: bold; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #0a0a0a; }
     
-    .chat-box { width: 350px; background: rgba(17, 24, 39, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); overflow: hidden; opacity: 0; transform: translateY(20px) scale(0.95); transform-origin: bottom right; transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1); pointer-events: none; }
+    .chat-box { width: 350px; max-width: calc(100vw - 40px); background: rgba(17, 24, 39, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); overflow: hidden; opacity: 0; transform: translateY(20px) scale(0.95); transform-origin: bottom right; transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1); pointer-events: none; }
     .chat-box.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
     
-    .chat-header { background: linear-gradient(135deg, #135bec, #06b6d4); padding: 20px; color: white; position: relative; }
-    .chat-header h3 { margin: 0; font-size: 18px; font-weight: 600; font-family: 'Space Grotesk', sans-serif;}
-    .chat-header p { margin: 5px 0 0; font-size: 13px; opacity: 0.9; }
-    .close-btn { position: absolute; top: 15px; right: 15px; background: none; border: none; color: white; font-size: 20px; cursor: pointer; opacity: 0.8; }
+    .chat-header { background: linear-gradient(135deg, #135bec, #06b6d4); padding: 16px 20px; color: white; position: relative; }
+    .chat-header h3 { margin: 0; font-size: 16px; font-weight: 600; font-family: 'Space Grotesk', sans-serif;}
+    .chat-header p { margin: 4px 0 0; font-size: 12px; opacity: 0.9; }
+    .close-btn { position: absolute; top: 12px; right: 15px; background: none; border: none; color: white; font-size: 24px; cursor: pointer; opacity: 0.8; line-height: 1;}
     .close-btn:hover { opacity: 1; }
     
-    .chat-body { padding: 20px; height: 350px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+    .chat-body { padding: 20px; height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
     .chat-body::-webkit-scrollbar { width: 6px; }
     .chat-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
     
-    .message { max-width: 85%; padding: 10px 15px; border-radius: 15px; font-size: 14px; line-height: 1.4; position: relative; animation: slideUp 0.3s ease-out forwards; font-family: sans-serif; }
+    .message { max-width: 85%; padding: 10px 15px; border-radius: 15px; font-size: 13.5px; line-height: 1.4; position: relative; animation: slideUp 0.3s ease-out forwards; font-family: sans-serif; }
     .message.bot { background: rgba(255,255,255,0.1); color: #fff; align-self: flex-start; border-bottom-left-radius: 4px; }
     .message.user { background: #06b6d4; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
     
     .options-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px; animation: fadeIn 0.5s ease-in forwards; }
-    .option-btn { background: transparent; border: 1px solid #06b6d4; color: #06b6d4; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .option-btn { background: transparent; border: 1px solid #06b6d4; color: #06b6d4; padding: 8px 14px; border-radius: 20px; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
     .option-btn:hover { background: #06b6d4; color: #0a0a0a; }
     
     .typing-indicator { background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 20px; border-bottom-left-radius: 4px; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 10px; align-self: flex-start; animation: slideUp 0.3s ease-out forwards; }
@@ -81,17 +76,23 @@
     @keyframes wave { 0%, 60%, 100% { transform: initial; } 30% { transform: translateY(-5px); } }
   </style>
 </head>
-<body class="font-sans antialiased hero-gradient min-h-screen flex flex-col relative">
 
-  <div id="promoToast" class="fixed top-6 left-1/2 -translate-x-1/2 z-[10000] w-full max-w-sm">
-    <div class="glass-card p-4 rounded-brand border-brand-accent/50 shadow-2xl shadow-brand-accent/20 relative">
-      <button onclick="closePromoToast()" class="absolute top-2 right-3 text-gray-400 hover:text-white font-bold text-lg">&times;</button>
-      <div class="flex items-center space-x-2 text-green-400 mb-2">
-        <span class="material-symbols-outlined text-sm">check_circle</span>
-        <span class="text-sm font-bold" id="toastSuccessMsg">Language Switch Success!</span>
+<body class="bg-[#0a0a0a] font-sans antialiased min-h-screen flex flex-col relative">
+
+  <div class="fixed inset-0 pointer-events-none z-[-1]" style="background: radial-gradient(circle at top right, rgba(19, 91, 236, 0.15), transparent 60%);"></div>
+
+  <div id="promoToast" class="fixed bottom-28 left-1/2 -translate-x-1/2 z-[10000] w-[90%] max-w-sm transition-all duration-500 ease-in-out translate-y-[150%] opacity-0 pointer-events-none">
+    <div class="glass-card p-4 rounded-xl shadow-2xl relative flex flex-col border border-brand-accent/40 bg-[#111827]">
+      <button onclick="closePromoToast()" class="absolute top-2 right-3 text-gray-400 hover:text-white font-bold text-2xl leading-none pointer-events-auto cursor-pointer">&times;</button>
+      
+      <div class="flex items-center space-x-1.5 text-brand-accent mb-2">
+        <span class="material-symbols-outlined text-[16px]">g_translate</span>
+        <span class="text-xs md:text-sm font-bold" id="toastSuccessMsg">Language Switch Success!</span>
       </div>
-      <h4 class="text-white font-bold mb-1" id="toastPromoTitle">Impressed by this feature?</h4>
-      <p class="text-gray-400 text-xs leading-relaxed" id="toastPromoDesc">
+      
+      <h4 class="text-sm md:text-base text-white font-bold pr-6 mb-1" id="toastPromoTitle">Impressed by this feature?</h4>
+      
+      <p class="text-gray-300 text-[11px] md:text-xs leading-relaxed pr-2" id="toastPromoDesc">
         We built this multi-language (i18n) system. Want your website to speak multiple languages smoothly? Contact us and we can code this into your project!
       </p>
     </div>
@@ -106,9 +107,9 @@
     </div>
     
     <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-brand-surface border border-white/10 text-white text-sm rounded-lg focus:ring-brand-accent focus:border-brand-accent block p-2 cursor-pointer">
-      <option value="en">EN English</option>
+      <option value="en">🇺🇸 English</option>
       <option value="cn">🇨🇳 中文</option>
-      <option value="bm">🇲🇾 Bahasa Malaysia</option>
+      <option value="bm">🇲🇾 Bahasa</option>
     </select>
   </header>
 
@@ -219,7 +220,7 @@
     </section>
   </main>
 
-  <footer class="w-full text-center py-6 text-gray-600 text-sm border-t border-white/5 bg-black">
+  <footer class="w-full text-center py-6 text-gray-600 text-sm border-t border-white/5 bg-[#0a0a0a]">
     <p data-i18n="footer">© 2026 Nextravox IT & Digital Services. Proudly serving Penang.</p>
   </footer>
 
@@ -243,12 +244,9 @@
   </div>
 
   <script>
-    // Global State
     let currentLang = 'en';
 
-    // ==========================================
-    // 1. i18n Translation Dictionary
-    // ==========================================
+    // Fully Restored Translations
     const translations = {
       en: {
         toast_success: "Language Switch Success!",
@@ -324,26 +322,21 @@
       }
     };
 
-    // --- i18n Logic ---
     let toastTimeout;
+    
     function changeLanguage(lang) {
-      currentLang = lang; // Update global state for the bot
+      currentLang = lang;
       
-      // Update page text
       const elements = document.querySelectorAll('[data-i18n]');
       elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-          el.innerHTML = translations[lang][key];
-        }
+        if (translations[lang][key]) el.innerHTML = translations[lang][key];
       });
       
-      // Update the Promo Toast language
       document.getElementById('toastSuccessMsg').innerText = translations[lang]['toast_success'];
       document.getElementById('toastPromoTitle').innerText = translations[lang]['toast_title'];
       document.getElementById('toastPromoDesc').innerText = translations[lang]['toast_desc'];
 
-      // Update Chatbot Header Language
       const botTitles = { en: "Nextravox Bot 🤖", cn: "Nextravox 机器人 🤖", bm: "Bot Nextravox 🤖" };
       const botDescs = { en: "I don't sleep. Ask me anything.", cn: "我不需要睡觉。随便问。", bm: "Saya tak tidur. Tanyalah apa-apa." };
       document.getElementById('botHeaderTitle').innerText = botTitles[lang];
@@ -351,96 +344,66 @@
 
       showPromoToast();
       
-      // Restart chat silently so it switches languages
       if (isChatOpen) {
         document.getElementById('chatBody').innerHTML = '';
         showTypingAndMessage('start', 500);
       } else {
-        document.getElementById('chatBody').innerHTML = ''; // Reset for next open
+        document.getElementById('chatBody').innerHTML = '';
       }
     }
 
     function showPromoToast() {
       const toast = document.getElementById('promoToast');
-      toast.classList.add('show');
+      toast.classList.remove('translate-y-[150%]', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      
       clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(() => { closePromoToast(); }, 8000);
+      toastTimeout = setTimeout(() => { closePromoToast(); }, 6000); 
     }
 
     function closePromoToast() {
-      document.getElementById('promoToast').classList.remove('show');
+      const toast = document.getElementById('promoToast');
+      toast.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      toast.classList.add('translate-y-[150%]', 'opacity-0', 'pointer-events-none');
     }
 
-    // ==========================================
-    // 2. Multilingual Chatbot Logic 
-    // ==========================================
     function getBotLogic() {
       const waLink = "https://wa.me/601154162338";
-      
-      const logicTrees = {
+      return {
         en: {
           start: {
             text: "Beep boop. 🤖 Hi! I'm the Nextravox Smart Router.\n\nMy humans are currently coding, so I'm handling the front desk. What are you looking for?",
-            options: [ { label: "🌐 Web Development", next: "webdev" }, { label: "📈 SEO & Maintenance", next: "seo" }, { label: "🤖 Get a Bot Like You", next: "promo_bot" } ]
+            options: [ { label: "🌐 Web Development", next: "webdev" }, { label: "📈 SEO & Maintenance", next: "seo" }, { label: "🤖 Get a Bot Like Me", next: "promo_bot" } ]
           },
-          webdev: {
-            text: "We handle A-Z web development. Domains, servers, and writing the actual code.\n\nWe 'speak to the machines' so you don't have to. Want to discuss a project?",
-            options: [ { label: "Yes, Contact Admin", next: "wa_admin" }, { label: "⬅️ Back", next: "start" } ]
-          },
-          seo: {
-            text: "We optimize your site so Google actually knows you exist, and maintain it so it doesn't randomly crash. \n\nNeed technical help?",
-            options: [ { label: "Yes, Contact Admin", next: "wa_admin" }, { label: "⬅️ Back", next: "start" } ]
-          },
-          promo_bot: {
-            text: "Ah, excellent choice! 😎\n\nI work 24/7, I never ask for OT, and I answer repetitive questions so business owners can sleep.\n\nInterested in having a bot like me on your website?",
-            options: [ { label: "Yes! Tell me more.", next: "wa_promo" }, { label: "⬅️ Back to menu", next: "start" } ]
-          },
+          webdev: { text: "We handle A-Z web development. Domains, servers, and writing the actual code.\n\nWe 'speak to the machines' so you don't have to. Want to discuss a project?", options: [ { label: "Contact Admin", next: "wa_admin" }, { label: "⬅️ Back", next: "start" } ] },
+          seo: { text: "We optimize your site so Google actually knows you exist, and maintain it so it doesn't crash. \n\nNeed technical help?", options: [ { label: "Contact Admin", next: "wa_admin" }, { label: "⬅️ Back", next: "start" } ] },
+          promo_bot: { text: "Ah, excellent choice! 😎\n\nI work 24/7, I never ask for OT, and I answer repetitive questions so business owners can sleep.\n\nInterested in having a bot like me?", options: [ { label: "Yes! Tell me more.", next: "wa_promo" }, { label: "⬅️ Back", next: "start" } ] },
           wa_admin: { type: "link", url: `${waLink}?text=Hi! I saw your coming soon page and want to talk about Web Dev/SEO.`, msg: "Opening WhatsApp..." },
-          wa_promo: { type: "link", url: `${waLink}?text=Hi! I interacted with your Smart Router bot. I am interested in getting a chatbot feature for my own business.`, msg: "Awesome! Opening WhatsApp..." }
+          wa_promo: { type: "link", url: `${waLink}?text=Hi! I interacted with your Smart Router bot. I am interested in getting a chatbot feature for my business.`, msg: "Awesome! Opening WhatsApp..." }
         },
         cn: {
           start: {
             text: "滴滴 🤖 你好！我是 Nextravox 智能客服。\n\n我的主人们正在疯狂敲代码，所以由我来接待您。您想了解什么？",
             options: [ { label: "🌐 网页开发", next: "webdev" }, { label: "📈 SEO 与维护", next: "seo" }, { label: "🤖 定制同款机器人", next: "promo_bot" } ]
           },
-          webdev: {
-            text: "我们包办A-Z的网页开发。域名、服务器和实际代码。\n\n我们替您“与机器对话”。想聊聊您的项目吗？",
-            options: [ { label: "好的，联系客服", next: "wa_admin" }, { label: "⬅️ 返回", next: "start" } ]
-          },
-          seo: {
-            text: "我们优化您的网站，让谷歌知道您的存在，并防止它崩溃。\n\n需要技术协助吗？",
-            options: [ { label: "好的，联系客服", next: "wa_admin" }, { label: "⬅️ 返回", next: "start" } ]
-          },
-          promo_bot: {
-            text: "啊，眼光不错！😎\n\n我24小时在线，从不要求加班，还能帮老板挡住重复问题。\n\n有兴趣在您的网站也放一个我吗？",
-            options: [ { label: "是的！告诉我更多", next: "wa_promo" }, { label: "⬅️ 返回菜单", next: "start" } ]
-          },
+          webdev: { text: "我们包办A-Z的网页开发。替您“与机器对话”。想聊聊您的项目吗？", options: [ { label: "联系客服", next: "wa_admin" }, { label: "⬅️ 返回", next: "start" } ] },
+          seo: { text: "我们优化您的网站，让谷歌知道您的存在，并防止崩溃。需要技术协助吗？", options: [ { label: "联系客服", next: "wa_admin" }, { label: "⬅️ 返回", next: "start" } ] },
+          promo_bot: { text: "眼光不错！😎\n\n我24小时在线，从不要求加班，还能挡住重复问题。\n\n有兴趣定制一个吗？", options: [ { label: "是的！", next: "wa_promo" }, { label: "⬅️ 返回", next: "start" } ] },
           wa_admin: { type: "link", url: `${waLink}?text=你好！我看到了你们的敬请期待页面，想咨询网页开发/SEO。`, msg: "正在打开 WhatsApp..." },
-          wa_promo: { type: "link", url: `${waLink}?text=你好！我和你们的智能客服机器人互动过。我对定制聊天机器人功能很感兴趣。`, msg: "太棒了！正在打开 WhatsApp..." }
+          wa_promo: { type: "link", url: `${waLink}?text=你好！我和你们的智能客服互动过。我对定制聊天机器人感兴趣。`, msg: "太棒了！正在打开 WhatsApp..." }
         },
         bm: {
           start: {
             text: "Beep boop. 🤖 Hai! Saya Nextravox Smart Router.\n\nTuan saya sedang mengekod, jadi saya jaga kaunter depan. Apa yang anda cari?",
-            options: [ { label: "🌐 Pembangunan Web", next: "webdev" }, { label: "📈 SEO & Penyelenggaraan", next: "seo" }, { label: "🤖 Dapatkan Bot Seperti Anda", next: "promo_bot" } ]
+            options: [ { label: "🌐 Pembangunan Web", next: "webdev" }, { label: "📈 SEO & Penyelenggaraan", next: "seo" }, { label: "🤖 Dapatkan Bot Seperti Saya", next: "promo_bot" } ]
           },
-          webdev: {
-            text: "Kami buat pembangunan web A-Z. Domain, pelayan, dan tulis kod.\n\nKami 'bercakap dengan mesin' untuk anda. Nak bincang projek?",
-            options: [ { label: "Ya, Hubungi Admin", next: "wa_admin" }, { label: "⬅️ Kembali", next: "start" } ]
-          },
-          seo: {
-            text: "Kami optimumkan laman web anda supaya Google tahu anda wujud, dan elak ia tergendala.\n\nPerlukan bantuan teknikal?",
-            options: [ { label: "Ya, Hubungi Admin", next: "wa_admin" }, { label: "⬅️ Kembali", next: "start" } ]
-          },
-          promo_bot: {
-            text: "Pilihan yang bijak! 😎\n\nSaya kerja 24/7, tak minta OT, dan jawab soalan berulang.\n\nBerminat nak letak bot macam saya di laman web anda?",
-            options: [ { label: "Ya! Beritahu saya lebih lanjut", next: "wa_promo" }, { label: "⬅️ Kembali ke menu", next: "start" } ]
-          },
+          webdev: { text: "Kami buat pembangunan web A-Z. Kami 'bercakap dengan mesin' untuk anda. Nak bincang projek?", options: [ { label: "Hubungi Admin", next: "wa_admin" }, { label: "⬅️ Kembali", next: "start" } ] },
+          seo: { text: "Kami optimumkan laman web anda supaya Google tahu anda wujud. Perlukan bantuan teknikal?", options: [ { label: "Hubungi Admin", next: "wa_admin" }, { label: "⬅️ Kembali", next: "start" } ] },
+          promo_bot: { text: "Pilihan bijak! 😎\n\nSaya kerja 24/7, tak minta OT, dan jawab soalan berulang.\n\nBerminat nak letak bot macam saya?", options: [ { label: "Ya!", next: "wa_promo" }, { label: "⬅️ Kembali", next: "start" } ] },
           wa_admin: { type: "link", url: `${waLink}?text=Hai! Saya nampak page coming soon anda dan nak bincang tentang Web Dev/SEO.`, msg: "Membuka WhatsApp..." },
-          wa_promo: { type: "link", url: `${waLink}?text=Hai! Saya telah berinteraksi dengan bot Smart Router anda. Saya berminat untuk mendapatkan ciri chatbot untuk perniagaan saya.`, msg: "Hebat! Membuka WhatsApp..." }
+          wa_promo: { type: "link", url: `${waLink}?text=Hai! Saya berminat untuk mendapatkan ciri chatbot untuk perniagaan saya.`, msg: "Hebat! Membuka WhatsApp..." }
         }
-      };
-      
-      return logicTrees[currentLang];
+      }[currentLang];
     }
 
     let isChatOpen = false;
@@ -451,28 +414,21 @@
       isChatOpen = !isChatOpen;
       if (isChatOpen) {
         chatBox.classList.add('open');
-        if (chatBody.innerHTML.trim() === "") {
-          showTypingAndMessage('start', 800); 
-        }
+        if (chatBody.innerHTML.trim() === "") showTypingAndMessage('start', 800); 
       } else {
         chatBox.classList.remove('open');
       }
     }
 
-    function showTypingAndMessage(stepId, delay = 1500) {
+    function showTypingAndMessage(stepId, delay = 1200) {
       const activeLogic = getBotLogic();
       const step = activeLogic[stepId];
-      
-      // Typing text based on language
       const typingTexts = { en: "Bot is typing", cn: "机器人正在输入", bm: "Bot sedang menaip" };
 
       const typingDiv = document.createElement('div');
       typingDiv.className = 'typing-indicator';
       typingDiv.id = 'typing';
-      typingDiv.innerHTML = `
-        <span class="typing-text">${typingTexts[currentLang]}</span>
-        <div class="typing-dots"><span></span><span></span><span></span></div>
-      `;
+      typingDiv.innerHTML = `<span class="typing-text">${typingTexts[currentLang]}</span><div class="typing-dots"><span></span><span></span><span></span></div>`;
       chatBody.appendChild(typingDiv);
       scrollToBottom();
 
@@ -490,21 +446,14 @@
         setTimeout(() => showRestartButton(), 1500);
         return;
       }
-
       addMessage(step.text, 'bot');
-      
       const optionsDiv = document.createElement('div');
       optionsDiv.className = 'options-container';
-      
       step.options.forEach(opt => {
         const btn = document.createElement('button');
         btn.className = 'option-btn';
         btn.innerText = opt.label;
-        btn.onclick = () => {
-          optionsDiv.remove(); 
-          addMessage(opt.label, 'user'); 
-          showTypingAndMessage(opt.next, 1200); 
-        };
+        btn.onclick = () => { optionsDiv.remove(); addMessage(opt.label, 'user'); showTypingAndMessage(opt.next, 1000); };
         optionsDiv.appendChild(btn);
       });
       chatBody.appendChild(optionsDiv);
@@ -518,11 +467,7 @@
       const restartBtn = document.createElement('button');
       restartBtn.className = 'option-btn';
       restartBtn.innerText = restartTexts[currentLang];
-      restartBtn.onclick = () => {
-        optionsDiv.remove();
-        addMessage(restartTexts[currentLang], 'user');
-        showTypingAndMessage('start', 500); 
-      };
+      restartBtn.onclick = () => { optionsDiv.remove(); addMessage(restartTexts[currentLang], 'user'); showTypingAndMessage('start', 500); };
       optionsDiv.appendChild(restartBtn);
       chatBody.appendChild(optionsDiv);
       scrollToBottom();
@@ -536,9 +481,7 @@
       scrollToBottom();
     }
 
-    function scrollToBottom() {
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
+    function scrollToBottom() { chatBody.scrollTop = chatBody.scrollHeight; }
   </script>
 </body>
 </html>
